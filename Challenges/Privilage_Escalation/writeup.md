@@ -38,8 +38,6 @@ mkdir -p woot/etc libnss_
 echo "passwd: /woot1337" > woot/etc/nsswitch.conf
 ```
 
-[SCREENSHOT HERE]
-
 **Explanation**: This command creates a custom `nsswitch.conf` file inside our `woot/etc` directory. The file tells the system to use `/woot1337` as the source for passwd information. This is a crucial step as it tricks the system into loading our malicious library when it tries to resolve user information.
 
 ### Step 4: Copy Group File
