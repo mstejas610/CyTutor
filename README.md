@@ -1,8 +1,8 @@
-# Team#06 - CyTutor ![](https://img.shields.io/badge/-Live-brightgreen)
+# Team#06 - Project Title ![](https://img.shields.io/badge/-Live-brightgreen)
 ![](https://img.shields.io/badge/Batch-22UCYS-green) <br/> ![](https://img.shields.io/badge/Domain-Security-blue)  ![](https://img.shields.io/badge/Focus-TBD-yellow)  ![](https://img.shields.io/badge/B.Tech--Project-Started-brightgreen) <br/>
 
 ## Problem Statement
-
+    
 ## Background
 
 ## Abstract
@@ -22,10 +22,10 @@ APA Format
 TBD
 
 ## Team Members
-- [1]()
-- [2]()
-- [3]()
-- [4]()
+- [Asrita NL](https://github.com/luckyasrita-16)
+- [Chinni Nagasree Hansica](https://github.com/HansicaChinni)
+- [Sai Tejas M](https://github.com/mstejas610)
+- [Tangella Sree Chandan](https://github.com/sreechandan5956)
 
 
     
