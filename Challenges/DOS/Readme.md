@@ -23,4 +23,5 @@ You should see a container named victim exposing port 8080.
 # 3️⃣ Verify the service
 
 curl http://localhost:8080
-# Output: Service OK
+
+Output: Service OK
