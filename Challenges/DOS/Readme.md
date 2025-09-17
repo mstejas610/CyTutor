@@ -8,19 +8,19 @@ Players must overwhelm the service with many concurrent TCP connections to trigg
 
 ---
 
-## 1️⃣ Start the environment
+### 1️⃣ Start the environment
 
 docker compose up -d
 
 
-## 2️⃣ Check running services
+### 2️⃣ Check running services
 
 docker compose ps
 
 
 You should see a container named victim exposing port 8080.
 
-# 3️⃣ Verify the service
+### 3️⃣ Verify the service
 
 curl http://localhost:8080
 
