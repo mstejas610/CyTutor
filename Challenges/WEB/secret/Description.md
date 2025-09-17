@@ -13,7 +13,7 @@ docker build -t secret .
 
 run
 ```bash
-docker run --detach --name {port} -p {port}:3000 secret
+docker run -p {port}:3000 secret
 ```
 
 stop
