@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  victim:
+    build: ./victim
+    container_name: victim
+    ports:
+      - "8080:8080"
+
+
