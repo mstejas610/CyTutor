@@ -1,0 +1,139 @@
+version: '3.9'
+
+services:
+  # PostgreSQL Database
+  database:
+    image: postgres:15-alpine
+    container_name: cytutor-db
+    environment:
+      POSTGRES_DB: cytutor
+      POSTGRES_USER: cytutor_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-securepassword123}
+      POSTGRES_INITDB_ARGS: "--auth-host=md5"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - cytutor-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cytutor_user -d cytutor"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Backend API Server
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cytutor-backend
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: cytutor
+      DB_USER: cytutor_user
+      DB_PASSWORD: ${DB_PASSWORD:-securepassword123}
+      JWT_SECRET: ${JWT_SECRET:-your_super_secure_jwt_secret_key_here_minimum_32_characters}
+      JWT_EXPIRES_IN: 24h
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - cytutor-network
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    command: npm run dev
+
+  # Frontend React App
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cytutor-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+      CHOKIDAR_USEPOLLING: true
+      WATCHPACK_POLLING: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - cytutor-network
+    depends_on:
+      - backend
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+  # Redis (Optional - for session storage, caching)
+  redis:
+    image: redis:7-alpine
+    container_name: cytutor-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - cytutor-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Challenge Runner (Optional - for isolated challenge execution)
+  challenge-runner:
+    image: docker:24-dind
+    container_name: cytutor-challenge-runner
+    privileged: true
+    ports:
+      - "4000-4100:4000-4100"  # Range for challenge ports
+    volumes:
+      - docker_socket:/var/run
+      - ./Challenges:/challenges:ro
+    networks:
+      - cytutor-network
+      - challenge-network
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    restart: unless-stopped
+    command: dockerd-entrypoint.sh
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  docker_socket:
+    driver: local
+
+networks:
+  cytutor-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+  challenge-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
