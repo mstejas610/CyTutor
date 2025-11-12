@@ -1,0 +1,1 @@
+picoCTF{bookmarklet_reads_files_2025}

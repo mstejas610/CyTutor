@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{{ name }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --bg:#060812;
+      --panel:#071026;
+      --muted:#9aa4b2;
+      --accent:#60a5fa;
+      --text:#e6eef8;
+      --radius:10px;
+      --code-bg:#0b1220;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#020205);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto, "Helvetica Neue", Arial;color:var(--text);-webkit-font-smoothing:antialiased}
+    .page{max-width:1000px;margin:28px auto;padding:18px}
+    .card{background:linear-gradient(180deg,var(--panel),#020817);border-radius:var(--radius);padding:18px;box-shadow:0 8px 28px rgba(0,0,0,0.6)}
+    h2{margin:0 0 12px 0;font-size:18px}
+    pre{background:var(--code-bg);padding:14px;border-radius:10px;color:var(--text);overflow:auto;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;line-height:1.5}
+    a.back{display:inline-block;margin-top:12px;color:var(--accent);text-decoration:none;font-weight:600}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+    @media (max-width:520px){.page{margin:14px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card" role="article" aria-labelledby="view-title">
+      <h2 id="view-title">Viewing: {{ name }}</h2>
+      <div class="meta">File contents are shown below</div>
+      <pre>{{ content }}</pre>
+      <a class="back" href="/">← Back</a>
+    </div>
+  </div>
+</body>
+</html>
