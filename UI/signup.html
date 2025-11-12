@@ -196,8 +196,8 @@
       </div>
       <form id="signup-form">
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
@@ -205,7 +205,8 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" minlength="8" required>
+          <small style="color: #888; font-size: 0.85rem;">Minimum 8 characters</small>
         </div>
         <div class="form-group">
           <label for="confirm-password">Confirm Password</label>
@@ -214,7 +215,7 @@
         <button type="submit" class="submit-btn">Create Account</button>
       </form>
       <div class="login-link">
-        Already have an account?<a href="login.html">Login here</a>
+        Already have an account?<a href="Login.html">Login here</a>
       </div>
     </div>
   </main>
@@ -294,20 +295,48 @@
 
     init();
     animate();
+  </script>
 
-    // Form validation
-    document.getElementById('signup-form').addEventListener('submit', function(e) {
+  <script src="js/auth.js"></script>
+  <script>
+    // Form validation and signup
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirm-password').value;
+      const submitBtn = e.target.querySelector('.submit-btn');
 
       if (password !== confirmPassword) {
-        alert('Passwords do not match!');
+        showMessage('Passwords do not match!', 'error');
         return;
       }
-      
-      // Add your signup logic here
-      console.log('Form submitted!');
+
+      if (password.length < 8) {
+        showMessage('Password must be at least 8 characters', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating Account...';
+
+      try {
+        const result = await register(name, email, password);
+        showMessage('Registration successful! Check your email for OTP.', 'success');
+        
+        // Store email for OTP verification
+        localStorage.setItem('pendingEmail', email);
+        
+        setTimeout(() => {
+          window.location.href = 'verify-otp.html';
+        }, 2000);
+      } catch (error) {
+        showMessage(error.message, 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create Account';
+      }
     });
   </script>
 </body>

@@ -217,19 +217,19 @@
     <div class="container">
         <div class="form-container">
             <p class="title">Login</p>
-            <form class="form">
+            <form class="form" id="loginForm">
                 <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="">
+                    <input type="password" name="password" id="password" placeholder="" required>
                     <div class="forgot">
                         <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
                     </div>
                 </div>
-                <button class="sign">Sign in</button>
+                <button type="submit" class="sign">Sign in</button>
             </form>
             <div class="line"></div>
             <p class="signup">Don't have an account?
@@ -238,11 +238,36 @@
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
     <script>
         // Dark mode toggle
         const toggleBtn = document.getElementById("darkModeToggle");
         toggleBtn.addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = e.target.querySelector('.sign');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing in...';
+            
+            try {
+                const result = await login(email, password);
+                showMessage('Login successful!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            } catch (error) {
+                showMessage(error.message, 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Sign in';
+            }
         });
     </script>
 </body>
