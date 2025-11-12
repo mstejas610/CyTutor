@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Materials | CyTutor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top, #0b0b0f, #000);
+    color: #e5e5e5;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 10px;
+  }
+  header h1 {
+    color: #00ff88;
+    font-size: 2.4rem;
+    /* text-shadow: 0 0 3px #00ff88; */
+    font-weight: 700;
+  }
+
+  nav.breadcrumb {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    color: #00ff88;
+    text-shadow: 0 0 2px #00ff88;
+    margin-bottom: 10px;
+    border-left: 5px solid #00ff88;
+    padding-left: 15px;
+  }
+
+  .section-desc {
+    color: #bbb;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+  }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .course-card {
+    background: #0d0d11;
+    border: 1px solid #1f1f25;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.06);
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .course-card:hover {
+    transform: translateY(-6px);
+    border-color: #00ff88;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
+  }
+
+  .course-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: fill;
+    border-bottom: 1px solid #222;
+  }
+
+  .card-body {
+    padding: 18px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-body h3 {
+    color: #00ff88;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .card-body p {
+    color: #c2c2c2;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+
+  .card-body a {
+    display: inline-block;
+    background: #00ff88;
+    color: #000;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    transition: 0.3s;
+        text-decoration:none;
+
+  }
+
+  .card-body a:hover {
+    background: #00cc6a;
+    box-shadow: 0 0 12px #00ff88;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 2px solid rgba(0, 255, 136, 0.2);
+    margin: 60px auto;
+    width: 80%;
+  }
+
+  .background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at random, rgba(0,255,136,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    z-index: -1;
+    animation: moveBg 20s linear infinite;
+  }
+
+  @keyframes moveBg {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 200px; }
+  }
+  /* Apply to headings that need the CyTutor glow */
+.cy-glow {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ff88, #00cc66);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Adds that subtle glowing aura behind text */
+.cy-glow::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle at center, rgba(0,255,136,0.15) 0%, transparent 70%);
+  filter: blur(10px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+</style>
+</head>
+
+<body>
+<div class="background"></div>
+
+<header>
+  <h1 class="cy-glow">Course Materials</h1>
+</header>
+<nav class="breadcrumb">Home &gt; Learn &gt; Course Materials</nav>
+
+<!-- BEGINNER -->
+<section class="section" id="beginner">
+  <h2 class="section-title">Beginner Level</h2>
+  <p class="section-desc">
+    Start here if you're new to cybersecurity. These resources explain concepts in simple language with practical examples.
+  </p>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <img src="assets/network.jpg" alt="Network Fundamentals">
+      <div class="card-body">
+        <h3>Network Security Basics</h3>
+        <p>Understand what makes networks vulnerable and how to protect them.</p>
+        <a href="https://www.geeksforgeeks.org/computer-networks/network-security/" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/crypto.jpg" alt="Intro to Cryptography">
+      <div class="card-body">
+        <h3>Introduction to Cryptography</h3>
+        <p>Learn what encryption is, how it works, and where it’s used in real life.</p>
+        <a href="https://www.fortinet.com/resources/cyberglossary/what-is-cryptography" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/cybersec_fundamentals.jpg" alt="Cyber Fundamentals">
+      <div class="card-body">
+        <h3>Cybersecurity Fundamentals</h3>
+        <p>Get a broad understanding of cybersecurity from a beginner-friendly guide.</p>
+        <a href="https://www.knowledgehut.com/blog/security/cyber-security-fundamentals" target="_blank">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INTERMEDIATE -->
+<section class="section" id="intermediate">
+  <h2 class="section-title">Intermediate Level</h2>
+  <p class="section-desc">
+    Move beyond the basics — dive into detailed topics like OWASP guidelines, secure coding, and web security practices.
+  </p>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <img src="assets/secure_coding.jpg" alt="Application Security">
+      <div class="card-body">
+        <h3>Secure Coding Practices</h3>
+        <p>Understand common vulnerabilities and learn to write secure code.</p>
+        <a href="https://cheatsheetseries.owasp.org/" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/web_security.jpg" alt="Web Security">
+      <div class="card-body">
+        <h3>Web Security Overview</h3>
+        <p>Explore web vulnerabilities like XSS and CSRF and how to prevent them.</p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/Security" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/cloud.jpg" alt="Cloud Security Basics">
+      <div class="card-body">
+        <h3>Cloud Security Basics</h3>
+        <p>Understand the shared responsibility model and cloud best practices.</p>
+        <a href="https://learn.microsoft.com/en-us/azure/security/fundamentals/" target="_blank">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ADVANCED -->
+<section class="section" id="advanced">
+  <h2 class="section-title">Advanced Level</h2>
+  <p class="section-desc">
+    Deepen your skills with advanced topics — encryption standards, network monitoring, and cloud compliance frameworks.
+  </p>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <img src="assets/advanced_crypto.jpeg" alt="Advanced Cryptography">
+      <div class="card-body">
+        <h3>Advanced Cryptography</h3>
+        <p>Read about modern cryptographic standards and key management.</p>
+        <a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/defense.png" alt="Network Defense">
+      <div class="card-body">
+        <h3>Network Monitoring & Defense</h3>
+        <p>Explore IDS/IPS, packet analysis, and threat detection methods.</p>
+        <a href="https://www.varonis.com/blog/network-monitoring" target="_blank">Explore →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="assets/cs_c.jpg" alt="Cloud Compliance">
+      <div class="card-body">
+        <h3>Cloud Security & Compliance</h3>
+        <p>Study frameworks like CSA, ISO 27017, and zero-trust cloud design.</p>
+        <a href="https://cloudsecurityalliance.org/research/guidance/" target="_blank">Explore →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align:center;color:#888;padding:40px 0;font-size:0.9rem;">
+© 2025 CyTutor · Built for learners, by learners</div>
+
+</body>
+</html>
