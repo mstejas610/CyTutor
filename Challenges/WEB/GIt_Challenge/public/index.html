@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamFlix - Watch Movies Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>🎬 StreamFlix</h1>
+      <p>Your favorite movies, all in one place</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="movies-grid">
+      <div class="movie-card" onclick="showUnavailable('The Dark Knight')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+          <div class="movie-icon">🦇</div>
+        </div>
+        <h3>The Dark Knight</h3>
+        <p>Action, Drama</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('Inception')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
+          <div class="movie-icon">🌀</div>
+        </div>
+        <h3>Inception</h3>
+        <p>Sci-Fi, Thriller</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('Interstellar')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #000000 0%, #434343 100%);">
+          <div class="movie-icon">🚀</div>
+        </div>
+        <h3>Interstellar</h3>
+        <p>Sci-Fi, Adventure</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('The Matrix')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);">
+          <div class="movie-icon">💊</div>
+        </div>
+        <h3>The Matrix</h3>
+        <p>Sci-Fi, Action</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('Pulp Fiction')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #8e0e00 0%, #1f1c18 100%);">
+          <div class="movie-icon">🔫</div>
+        </div>
+        <h3>Pulp Fiction</h3>
+        <p>Crime, Drama</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('Forrest Gump')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+          <div class="movie-icon">🏃</div>
+        </div>
+        <h3>Forrest Gump</h3>
+        <p>Drama, Romance</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('The Shawshank Redemption')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
+          <div class="movie-icon">🔓</div>
+        </div>
+        <h3>The Shawshank Redemption</h3>
+        <p>Drama</p>
+      </div>
+
+      <div class="movie-card" onclick="showUnavailable('Avatar')">
+        <div class="movie-poster" style="background: linear-gradient(135deg, #134e5e 0%, #71b280 100%);">
+          <div class="movie-icon">🌿</div>
+        </div>
+        <h3>Avatar</h3>
+        <p>Sci-Fi, Adventure</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>⚠️ Currently Unavailable</h2>
+      <p id="modal-message"></p>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
