@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://hidden.com/index.html</loc></url>
+  <url><loc>http://hidden.com/about.html</loc></url>
+  <url><loc>http://hidden.com/hidden/page1.html</loc></url>
+  <url><loc>http://hidden.com/hidden/page2.html</loc></url>
+  <!-- Notice: the ultimate_secret page is missing -->
+</urlset>

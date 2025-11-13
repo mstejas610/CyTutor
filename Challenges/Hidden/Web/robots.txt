@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /hidden/page1.html
+Disallow: /hidden/page2.html
+# Allow: /hidden/ultimate_secret.html
