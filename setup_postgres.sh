@@ -30,7 +30,7 @@ sudo systemctl enable postgresql
 # Database configuration
 DB_NAME="cytutor_db"
 DB_USER="cytutor_user"
-DB_PASSWORD=$(openssl rand -base64 32)
+DB_PASSWORD="postgres"
 
 echo -e "${GREEN}Creating database and user...${NC}"
 
@@ -107,8 +107,9 @@ JWT_EXPIRE=24h
 # Email (Configure with your email provider)
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASSWORD=your_app_password_here
+EMAIL_USER=sreechandan1231@gmail.com
+EMAIL_PASSWORD=dmaa objf gzyz xklf
+
 
 # OTP
 OTP_EXPIRE_MINUTES=10
